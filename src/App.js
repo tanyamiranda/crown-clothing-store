@@ -5,8 +5,8 @@ import {Switch, Route} from 'react-router-dom';
 
 import HomePage from './pages/homepage/homepage.component';
 
-import CollectionPreviewPage from './pages/collections/previewpage/collectionspreviewpage.component.jsx';
-import CollectionFullViewPage from './pages/collections/fullviewpage/collectionsfullviewpage.component.jsx';
+import CollectionPreviewPage from './pages/collections/collectionspreviewpage.component.jsx';
+import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.component.jsx';
 
 function App() {
 

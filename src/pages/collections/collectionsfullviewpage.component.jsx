@@ -1,8 +1,8 @@
 import React from 'react';
 
-import SHOP_DATA from '../shop.data.js';
+import SHOP_DATA from './shop.data.js';
 
-import CollectionFullView from '../../../components/collection-fullview/collection-fullview.component';
+import CollectionFullView from '../../components/collection-view/collection-fullview.component';
 
 class CollectionFullViewPage extends React.Component {
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import './collection-preview.styles.scss';
+import './collection-view.styles.scss';
 
 import CollectionItem from '../collection-item/collection-item.component';
 
 const CollectionPreview = ({count, title, routeName, items, match, history}) => (
 
-    <div className="collection-preview">
+    <div className="collection-view">
         <h1 className="title">{title.toUpperCase()}
         <span className="viewAllLink" onClick={() => history.push(`${match.url}/${routeName}`)}>view all</span> 
         </h1>

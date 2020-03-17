@@ -1,4 +1,4 @@
-.collection-fullview {
+.collection-view {
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
@@ -6,6 +6,8 @@
   .title {
     font-size: 28px;
     margin-bottom: 25px;
+    margin: auto;
+    padding-bottom: 30px;
   }
 
   .preview {
