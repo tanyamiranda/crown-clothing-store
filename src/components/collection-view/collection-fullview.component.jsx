@@ -7,7 +7,7 @@ import CollectionItem from '../collection-item/collection-item.component';
 const CollectionFullView = ({title, routeName, items, match, history}) => (
 
     <div className="collection-view">
-        <h1 className="title">OUR {title.toUpperCase()} COLLECTION</h1>
+        <h1 className="title">{title.toUpperCase()} COLLECTION</h1>
         <div className="preview">
             {
                 items

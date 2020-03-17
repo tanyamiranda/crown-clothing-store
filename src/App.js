@@ -5,8 +5,9 @@ import {Switch, Route} from 'react-router-dom';
 
 import HomePage from './pages/homepage/homepage.component';
 
-import CollectionPreviewPage from './pages/collections/collectionspreviewpage.component.jsx';
-import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.component.jsx';
+import CollectionPreviewPage from './pages/collections/collectionspreviewpage.component';
+import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.component';
+import Header  from './components/header/header.component';
 
 function App() {
 
@@ -43,7 +44,7 @@ function App() {
 
   return (
     <div>
-      
+      <Header/>
       <Switch>
         <Route exact={true} path="/" component={HomePage} />
         <Route exact={true} path="/shop/" component={CollectionPreviewPage} />

@@ -58,7 +58,6 @@ class Directory extends React.Component {
 
         return (
             <div className="directory-menu">
-                <div className="directory-menu"><a href="/shop">Preview Collections</a></div>
                 <div className="directory-menu">
                     
                     {                
