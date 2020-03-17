@@ -4,16 +4,16 @@ import './collection-preview.styles.scss';
 
 import CollectionItem from '../collection-item/collection-item.component';
 
-const CollectionPreview = ({title, routeName, items, match, history}) => (
+const CollectionPreview = ({count, title, routeName, items, match, history}) => (
 
     <div className="collection-preview">
-        <h1 className="title"
-            onClick={() => history.push(`${match.url}/${routeName}`)}
-        >{title.toUpperCase()}</h1> 
+        <h1 className="title">{title.toUpperCase()}
+        <span className="viewAllLink" onClick={() => history.push(`${match.url}/${routeName}`)}>view all</span> 
+        </h1>
         <div className="preview">
             {
                 items
-                .filter( (item,index) => index < 4)
+                .filter( (item,index) => index < count)
                 .map(
                     ({id, ...mapProps}) => (
                         <CollectionItem key={id} {...mapProps}/>
