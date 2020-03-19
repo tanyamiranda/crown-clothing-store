@@ -13,7 +13,7 @@ const CollectionPreview = ({count, title, routeName, items, match, history}) => 
         <div className="preview">
             {
                 items
-                .filter( (item,index) => index < count)
+                .filter( (item,index) => index < count) // Shows only short list for preview page
                 .map(
                     ({id, ...mapProps}) => (
                         <CollectionItem key={id} {...mapProps}/>

@@ -12,8 +12,6 @@ class CollectionPreviewPage extends React.Component {
         this.state = {
             collections: SHOP_DATA
         }
-
-        console.log("CollectionPreviewPage props=", props);
     }
 
 

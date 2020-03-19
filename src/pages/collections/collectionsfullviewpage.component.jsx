@@ -13,8 +13,6 @@ class CollectionFullViewPage extends React.Component {
             collections: SHOP_DATA,
             collectionName : props.collectionName
         }
-        console.log("CollectionFullViewPage props=", props)
-        console.log("collectionName=", props.collectionName);
     }
 
 
@@ -26,9 +24,6 @@ class CollectionFullViewPage extends React.Component {
         const filteredCollection = collections.filter( 
             collection => collection.title.toLowerCase().match(`^` + collectionName.toLowerCase() + `$`)
         );
-
-        console.log("collectionName=", collectionName);
-        console.log("filteredCollection", filteredCollection);
 
         return (
             

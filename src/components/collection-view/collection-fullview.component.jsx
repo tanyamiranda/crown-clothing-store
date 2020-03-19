@@ -4,14 +4,13 @@ import './collection-view.styles.scss';
 
 import CollectionItem from '../collection-item/collection-item.component';
 
-const CollectionFullView = ({title, routeName, items, match, history}) => (
+const CollectionFullView = ({title, items}) => (
 
     <div className="collection-view">
         <h1 className="title">{title.toUpperCase()} COLLECTION</h1>
         <div className="preview">
             {
-                items
-                .map(
+                items.map(
                     ({id, ...mapProps}) => (
                         <CollectionItem key={id} {...mapProps}/>                    
                     )
