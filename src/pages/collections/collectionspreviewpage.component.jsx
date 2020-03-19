@@ -14,7 +14,6 @@ class CollectionPreviewPage extends React.Component {
         }
     }
 
-
     render() {
 
         return (
