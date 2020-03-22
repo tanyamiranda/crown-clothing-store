@@ -10,58 +10,35 @@ import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.
 import Header  from './components/header/header.component';
 import SignUpSignInPage from './pages/sign-up-sign-in/sign-up-sign-in.component';
 
-function App() {
+class App extends React.Component {
 
-  const HatsPage = () => (
-    <div>
-      <CollectionFullViewPage key={1}  collectionName={"hats"} />
-    </div>
-  )
+  constructor() {
+    super();
+    this.state = {
+      currentUser: null
+    }
+  }
 
-  const SneakerPage = () => (
-    <div>
-      <CollectionFullViewPage key={1}  collectionName={"sneakers"} />
-    </div>
-  )
+  render () {
+    return (
+      <div>
+        <Header/>
+        <Switch>
+          <Route exact={true} path="/" component={HomePage} />
+          <Route exact={true} path="/signin" component={SignUpSignInPage} />
+          <Route exact={true} path="/shop/" component={CollectionPreviewPage} />
 
-  const JacketsPage = () => (
-    <div>
-      <CollectionFullViewPage key={1}  collectionName={"jackets"} />
-    </div>
-  )
+          <Route exact={true} path='/shop/hats'  render={(props) => <CollectionFullViewPage {...props} collectionName='hats' />}/>
+          <Route exact={true} path='/shop/sneakers'  render={(props) => <CollectionFullViewPage {...props} collectionName='sneakers' />}/>
+          <Route exact={true} path='/shop/jackets'  render={(props) => <CollectionFullViewPage {...props} collectionName='jackets' />}/>
+          <Route exact={true} path='/shop/womens'  render={(props) => <CollectionFullViewPage {...props} collectionName='womens' />}/>
+          <Route exact={true} path='/shop/mens'  render={(props) => <CollectionFullViewPage {...props} collectionName='mens' />}/>
+        
+        </Switch>
+      </div>
+      );
+  }
 
-  const WomensPage = () => (
-    <div>
-      <CollectionFullViewPage key={1}  collectionName={"womens"} />
-    </div>
-  )
-
-  const MensPage = () => (
-    <div>
-      <CollectionFullViewPage key={1}  collectionName={"mens"} />
-    </div>
-  )
-
-
-  return (
-    <div>
-      <Header/>
-      <Switch>
-        <Route exact={true} path="/" component={HomePage} />
-        <Route exact={true} path="/shop/" component={CollectionPreviewPage} />
-        <Route exact={true} path="/shop/hats" component={HatsPage} />
-        <Route exact={true} path="/shop/sneakers" component={SneakerPage} />
-        <Route exact={true} path="/shop/jackets" component={JacketsPage} />
-        <Route exact={true} path="/shop/womens" component={WomensPage} />
-        <Route exact={true} path="/shop/mens" component={MensPage} />
-        <Route exact={true} path="/signin" component={SignUpSignInPage} />
-      </Switch>
-      
-
-
-
-    </div>
-  );
 }
 
 export default App;
