@@ -2,7 +2,6 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 
-
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
@@ -36,9 +35,8 @@ class App extends React.Component {
 
   render () {
     return (
-      
       <div>
-        <ScrollToTop/>
+        <ScrollToTop>
         <Header/>
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
@@ -50,6 +48,7 @@ class App extends React.Component {
           <Route exact={true} path='/shop/womens'  render={(props) => <CollectionFullViewPage {...props} collectionName='womens' />}/>
           <Route exact={true} path='/shop/mens'  render={(props) => <CollectionFullViewPage {...props} collectionName='mens' />}/>
         </Switch>
+        </ScrollToTop>
       </div>
       );
   }
