@@ -2,7 +2,7 @@ import React from 'react';
 
 import './header.styles.scss';
 
-import {ReactComponent as DragonLogo} from '../../assets/dragon.svg';
+import {ReactComponent as DragonLogo} from '../../assets/dragonyinyang.svg';
 import { Link } from 'react-router-dom';
 
 const Header = () => (
@@ -12,11 +12,11 @@ const Header = () => (
             <DragonLogo/>
         </Link>
         <Link className="logo-name" to="/">
-            DragonWear
+            Urban Dragon Wear
         </Link>
         <div className="options">
             <Link to="/shop" className="option">SHOP</Link>
-            <Link to="/contact" className="option">CONTACT</Link>
+            <Link to="/signin" className="option">SIGN IN</Link>
         </div>
 
     </div>

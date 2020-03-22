@@ -8,6 +8,7 @@ import HomePage from './pages/homepage/homepage.component';
 import CollectionPreviewPage from './pages/collections/collectionspreviewpage.component';
 import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.component';
 import Header  from './components/header/header.component';
+import SignUpSignInPage from './pages/sign-up-sign-in/sign-up-sign-in.component';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
         <Route exact={true} path="/shop/jackets" component={JacketsPage} />
         <Route exact={true} path="/shop/womens" component={WomensPage} />
         <Route exact={true} path="/shop/mens" component={MensPage} />
+        <Route exact={true} path="/signin" component={SignUpSignInPage} />
       </Switch>
       
 
