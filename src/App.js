@@ -22,22 +22,39 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
 
-    // This methond in the auth object allows us to set a callback
-    // function once the user has logged in or logged out of the site.
-    // Here, the "user" object is made available by the auth object, 
-    // and we set our currentUser to it, even if it's null.
-    auth.onAuthStateChanged(
+  /* 
+    The auth.onAuthStateChanged() method does 2 things:
+  
+    1. It allows us to set a callback function
+    once the user has logged in or logged out of the site.
+    Here, the function makes the "user" object available 
+    and we set our currentUser object to it.
+  
+    2. It returns the auth's unsubscribe function that we
+    then assign to our own function placeholder so we can 
+    call it back later when the component unmounts to log 
+    out the user.
+
+  */
+
+  unsubscribeFromAuth = null;  //function placeholder
+
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(
       user =>  {this.setState({currentUser: user})}
     );
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
   }
 
   render () {
     return (
       <div>
         <ScrollToTop>
-        <Header/>
+        <Header currentUser={this.state.currentUser}/>
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
           <Route exact={true} path="/signin" component={SignUpSignInPage} />
