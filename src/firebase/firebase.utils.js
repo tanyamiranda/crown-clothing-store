@@ -1,29 +1,56 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-
-import './firebase.config';
 import FIREBASE_CONFIG from './firebase.config';
 
-// the actual config key is obtained from the firebase app online
-// Got to -> console.firebase.google.com
-// -> Project Overview
-// -> Select app and go to config
-// -> Scroll down to Firebase SDK snippet
-/*const firebaseConfig = {
-    apiKey: "AIzaSyCl9uRsUm_rd-d6gX-RDUG46XZYQwFDcZo",
-    authDomain: "urbandragonwear.firebaseapp.com",
-    databaseURL: "https://urbandragonwear.firebaseio.com",
-    projectId: "urbandragonwear",
-    storageBucket: "urbandragonwear.appspot.com",
-    messagingSenderId: "634585665282",
-    appId: "1:634585665282:web:8859e84badc0796a3b7c1b"
-};*/
+/*
+    This method checks firebase for the user, and if it doesn't
+    exists, it creates a record.
 
-const firebaseConfig = FIREBASE_CONFIG; // from firebase.config.js
+    This method uses a lot of asynchronous functions in firebase, 
+    so those will have the await keyword in front to synchronize.
+*/
+export const createUserProfileDocument = async(userAuth, additionalData) => {
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+    if (!userAuth) return; // If user didn't sign in, do nothing.
+
+    const userRef = await firestore.doc(`users/${userAuth.uid}`); 
+
+    const snapshot = await userRef.get();
+
+    if (!snapshot.exists) {
+        
+        const {displayName,  email} = userAuth;
+        const createdDate = new Date();
+
+        try {
+
+            console.log("Creating new profile in firebase...");
+
+            await userRef.set({
+                displayName,
+                email,
+                createdDate,
+                ...additionalData
+            })    
+
+        }
+        catch (error) {
+            console.log("Error creating user profile.", error);
+        }
+    }
+    else {
+        console.log("User already exists...");
+    }
+
+    return userRef;
+
+}
+
+
+
+// Initialize Firebase with the config key
+firebase.initializeApp(FIREBASE_CONFIG);
 
 export const auth = firebase.auth();
 

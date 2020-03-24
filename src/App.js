@@ -9,7 +9,7 @@ import CollectionPreviewPage from './pages/collections/collectionspreviewpage.co
 import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.component';
 import Header  from './components/header/header.component';
 import SignUpSignInPage from './pages/sign-up-sign-in/sign-up-sign-in.component';
-import {auth} from './firebase/firebase.utils';
+import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 
 
 
@@ -42,7 +42,32 @@ class App extends React.Component {
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(
-      user =>  {this.setState({currentUser: user})}
+      //user =>  {this.setState({currentUser: user}, console.log("user=",user))}
+      async userAuth => {
+        if (userAuth) {
+          const userRef = createUserProfileDocument(userAuth);
+
+          (await userRef).onSnapshot(snapShot => {
+            this.setState(
+              {
+                currentUser: {
+                  id: snapShot.id,
+                  ...snapShot.data()
+                }
+              }, 
+              () => {console.log("currentUser=", this.state.currentUser)}
+            )
+          });
+          
+        }
+        else {
+          this.setState({currentUser: null}
+          , () => {console.log("currentUser=", this.state.currentUser)}
+          );
+        }
+        
+      } 
+
     );
   }
 
