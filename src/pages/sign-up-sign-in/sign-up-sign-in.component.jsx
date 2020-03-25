@@ -11,6 +11,8 @@ const SignUpSignInPage = ({currentUser}) => (
     
     <div>
     {
+        // If there is a user object, then user has just signed in or registered
+        // so we will redirect to homepage.
         currentUser ? 
             <Redirect to="/" />
         :
