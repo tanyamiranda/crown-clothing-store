@@ -13,13 +13,21 @@ const Header = ({currentUser}) => (
         <Link className="logo-name" to="/">
             Urban Dragon Wear
         </Link>
+        {
+            currentUser ?
+                <div className="welcome-message">Hello {currentUser.displayName}!</div>
+            :
+                <div></div>
+        }
         <div className="options">
+
             <Link to="/shop" className="option">SHOP</Link>
+            
             {
                 currentUser ?
-                <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
+                    <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
                 :
-                <Link to="/signin" className="option">SIGN IN</Link>
+                    <Link to="/signin" className="option">SIGN IN</Link>
             }
         </div>
 

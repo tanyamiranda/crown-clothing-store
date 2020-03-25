@@ -25,7 +25,7 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
         try {
 
-            console.log("Creating new profile in firebase...");
+            //console.log("Creating new profile in firebase...");
 
             await userRef.set({
                 displayName,
@@ -36,11 +36,11 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
         }
         catch (error) {
-            console.log("Error creating user profile.", error);
+            //console.log("Error creating user profile.", error);
         }
     }
     else {
-        console.log("User already exists...");
+        //console.log("User already exists...");
     }
 
     return userRef;

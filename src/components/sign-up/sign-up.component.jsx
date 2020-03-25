@@ -25,6 +25,7 @@ class SignUp extends React.Component {
         event.preventDefault();
 
         const {displayName, email, password, confirmPassword} = this.state;
+
         if (password !== confirmPassword) {
             alert("Passwords don't match.");
             return;
@@ -45,7 +46,6 @@ class SignUp extends React.Component {
         }
         catch (error) {
             console.log("Error on submit:", error);
-            return;
         }
 
 
@@ -54,7 +54,6 @@ class SignUp extends React.Component {
     // As a user types in, this function will set the state 
     handleChange = event => {
         const {value, name} = event.target;
-        //console.log(name, value);
         this.setState({[name]: value});
     }
 
@@ -75,6 +74,7 @@ class SignUp extends React.Component {
                         onChangeEvent={this.handleChange} 
                         required 
                         label="Display Name"
+                        autoComplete="display-name"
                     />
 
                     <FormInput 
@@ -84,6 +84,7 @@ class SignUp extends React.Component {
                         onChangeEvent={this.handleChange} 
                         required 
                         label="Email"
+                        autoComplete="email"
                     />
                     <FormInput 
                         name="password" 
@@ -92,6 +93,7 @@ class SignUp extends React.Component {
                         onChangeEvent={this.handleChange} 
                         required
                         label="Password"
+                        autoComplete="new-password"
                     />
                     <FormInput 
                         name="confirmPassword" 
@@ -100,6 +102,7 @@ class SignUp extends React.Component {
                         onChangeEvent={this.handleChange} 
                         required
                         label="Confirm Password"
+                        autoComplete="new-password-confirmation"
                     />
                     <div className="buttons">
                         <CustomButton type="submit">Create Account</CustomButton>
