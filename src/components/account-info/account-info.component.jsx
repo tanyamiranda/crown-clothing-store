@@ -42,3 +42,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps) (AccountInfo);
+

@@ -27,7 +27,7 @@ const Header = ({currentUser}) => (
             <Link to="/shop" className="option">SHOP</Link>
             {
                 currentUser ? (
-                    <Link to="/signin" className="option">ACCOUNT</Link>
+                    <Link to="/account" className="option">ACCOUNT</Link>
                 ) : (
                     <div></div>
                 )

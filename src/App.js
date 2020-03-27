@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 
 import './App.css';
@@ -9,6 +9,7 @@ import CollectionPreviewPage from './pages/collections/collectionspreviewpage.co
 import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.component';
 import Header  from './components/header/header.component';
 import SignUpSignInPage from './pages/sign-up-sign-in/sign-up-sign-in.component';
+import AccountInfoPage from './pages/account-info/account-info-page.component'
 import {auth, createUserProfileDocument} from './firebase/firebase.utils';
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
@@ -85,12 +86,36 @@ class App extends React.Component {
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
           <Route exact={true} path="/shop/" component={CollectionPreviewPage} />
-          <Route exact={true} path="/signin" component={SignUpSignInPage} />
           <Route exact={true} path='/shop/hats'  render={(props) => <CollectionFullViewPage {...props} collectionName='hats' />}/>
           <Route exact={true} path='/shop/sneakers'  render={(props) => <CollectionFullViewPage {...props} collectionName='sneakers' />}/>
           <Route exact={true} path='/shop/jackets'  render={(props) => <CollectionFullViewPage {...props} collectionName='jackets' />}/>
           <Route exact={true} path='/shop/womens'  render={(props) => <CollectionFullViewPage {...props} collectionName='womens' />}/>
           <Route exact={true} path='/shop/mens'  render={(props) => <CollectionFullViewPage {...props} collectionName='mens' />}/>
+
+          {
+          // If user is on SignUpSignInPage and is logged in, redirect to AccountInfoPage
+          }
+          <Route exact={true} path="/signin" render = 
+            {() => 
+              this.props.currentUser ? (
+              <Redirect to="/account" />
+              ) : (
+              <SignUpSignInPage />)
+            } 
+          />
+
+          {
+          // If user is on AccountInfoPage page and has logged out, redirect to SignUpSignInPage
+          }
+          <Route exact={true} path="/account" render = 
+            {() => 
+              !this.props.currentUser ? (
+              <Redirect to="/signin" />
+              ) : (
+              <AccountInfoPage />)
+            } 
+          />
+
         </Switch>
         </ScrollToTop>
       </div>
@@ -99,13 +124,12 @@ class App extends React.Component {
 
 }
 
-/* 
-This configuration tells Redux that whenever setCurrentUser() function 
-from './redux/user/user.actions' is called, to call all reducers.
+const mapStateToProps = ({user}) => ({
+  currentUser: user.currentUser
+})
 
-*/
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
  
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
