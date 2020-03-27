@@ -1,6 +1,5 @@
 import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
-
 import rootReducer from './root-reducer';
 
 // This object is create to hold all middleware calls
