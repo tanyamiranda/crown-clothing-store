@@ -1,8 +1,16 @@
 .account-info {
 
-    width: 380px;
     display: flex;
     flex-direction: column;
+    border-top: solid 0.5px silver;
+    padding: 20px 20px;
+
+    .title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        
+        font-weight: normal;
+    }
 
     .details {
         display: inline-block;
@@ -21,6 +29,7 @@
     }
 
     .buttons {
+        width: 380px;
         display: flex;
         justify-content: space-between;
         padding-top: 20px;

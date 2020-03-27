@@ -99,6 +99,11 @@ class App extends React.Component {
 
 }
 
+/* 
+This configuration tells Redux that whenever setCurrentUser() function 
+from './redux/user/user.actions' is called, to call all reducers.
+
+*/
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });

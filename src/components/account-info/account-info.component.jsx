@@ -18,7 +18,7 @@ const AccountInfo = ({currentUser}) => {
 
     return (
         <div className="account-info">
-            <h1>Account Details :</h1>
+            <h1 className="title">Account Details :</h1>
             <div className="details">
                 <span className="detail">
                     <span className="label">Name:</span>
