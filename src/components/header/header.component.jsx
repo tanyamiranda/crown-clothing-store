@@ -6,7 +6,11 @@ import {connect} from 'react-redux';
 
 import './header.styles.scss';
 
-const Header = ({currentUser}) => (
+import CartIcon from '../cart-icon/cart-icon.component';
+
+import CarDropdown from '../cart-dropdown/cart-dropdown.component';
+
+const Header = ({currentUser, hidden}) => (
 
     <div className="header">
         <Link className="logo-container" to="/">
@@ -15,22 +19,14 @@ const Header = ({currentUser}) => (
         <Link className="logo-name" to="/">
             Urban Dragon Wear
         </Link>
-        {
-            currentUser ?
-                <div className="welcome-message">Hello {currentUser.displayName}!</div>
-            :
-                <div></div>
-        }
         
         <div className="options">
 
             <Link to="/shop" className="option">SHOP</Link>
             {
-                currentUser ? (
+                !currentUser ? null : (
                     <Link to="/account" className="option">ACCOUNT</Link>
-                ) : (
-                    <div></div>
-                )
+                ) 
             }
             {
                 currentUser ? (
@@ -39,13 +35,32 @@ const Header = ({currentUser}) => (
                     <Link to="/signin" className="option">SIGN IN</Link>
                 )
             }
-        </div>
 
+            <CartIcon />
+        </div>
+        {
+            hidden ?  null : (
+                <CarDropdown/>
+            )
+        }
+        
     </div>
 );
 
 const mapStateToProps = state => ({
-    currentUser : state.user.currentUser
+    currentUser : state.user.currentUser,
+    hidden: state.cart.hidden
 });
+
+/*
+This is the same as above, but another way to code it.
+Not sure I like this way, but it's what was used in the video
+
+const mapStateToProps = ({ user:{currentUser}, cart:{hidden}}) => ({
+    currentUser,
+    hidden
+});
+*/
+
 
 export default connect(mapStateToProps) (Header);
