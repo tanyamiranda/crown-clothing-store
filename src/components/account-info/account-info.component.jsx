@@ -1,12 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './account-info.styles.scss';
-
-import CustomButton from '../custom-button/custom-button.component';
-
+import {useHistory} from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils';
-
 import {connect} from 'react-redux';
+
+import './account-info.styles.scss';
+import CustomButton from '../custom-button/custom-button.component';
+import {selectCurrentUser} from '../../redux/user/user.selectors'
 
 const AccountInfo = ({currentUser}) => {
 
@@ -38,7 +37,7 @@ const AccountInfo = ({currentUser}) => {
 }
 
 const mapStateToProps = state => ({
-    currentUser : state.user.currentUser
+    currentUser : selectCurrentUser(state)
 });
 
 export default connect(mapStateToProps) (AccountInfo);

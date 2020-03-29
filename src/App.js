@@ -1,6 +1,9 @@
 import React from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
+import {createStructuredSelector} from 'reselect';
+import {auth, createUserProfileDocument} from './firebase/firebase.utils';
+import {connect} from 'react-redux';
 
 import './App.css';
 
@@ -10,9 +13,9 @@ import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.
 import Header  from './components/header/header.component';
 import SignUpSignInPage from './pages/sign-up-sign-in/sign-up-sign-in.component';
 import AccountInfoPage from './pages/account-info/account-info-page.component'
-import {auth, createUserProfileDocument} from './firebase/firebase.utils';
-import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
+import {selectCurrentUser} from './redux/user/user.selectors'
+
 
 class App extends React.Component {
 
@@ -125,8 +128,8 @@ class App extends React.Component {
 }
 
 // This adds the currenUser object to be accessible by the app
-const mapStateToProps = ({user}) => ({
-  currentUser: user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 })
 
 // This maps the setCurrentUser() reducer call to be used in the app.

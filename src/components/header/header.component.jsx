@@ -1,14 +1,16 @@
 import React from 'react';
-import {ReactComponent as DragonLogo} from '../../assets/dragonyinyang.svg';
 import {Link} from 'react-router-dom';
 import {auth} from '../../firebase/firebase.utils';
 import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
 import './header.styles.scss';
 
+import {ReactComponent as DragonLogo} from '../../assets/dragonyinyang.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
-
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
+import {selectCurrentUser} from '../../redux/user/user.selectors';
+import {selectCartHidden} from '../../redux/cart/cart.selectors';
 
 const Header = ({currentUser, hidden}) => (
 
@@ -47,20 +49,9 @@ const Header = ({currentUser, hidden}) => (
     </div>
 );
 
-const mapStateToProps = state => ({
-    currentUser : state.user.currentUser,
-    hidden: state.cart.hidden
+const mapStateToProps = createStructuredSelector ({
+    currentUser : selectCurrentUser,
+    hidden: selectCartHidden
 });
-
-/*
-This is the same as above, but another way to code it.
-Not sure I like this way, but it's what was used in the video
-
-const mapStateToProps = ({ user:{currentUser}, cart:{hidden}}) => ({
-    currentUser,
-    hidden
-});
-*/
-
 
 export default connect(mapStateToProps) (Header);
