@@ -33,9 +33,9 @@ const CollectionItem = ({item, addToCart}) => {
 
 
   
-// This maps the setCurrentUser() reducer call to be used in the app.
+// This maps the addToCart() reducer call to be used in the app.
 const mapDispatchToProps = dispatch => ({
-addToCart: item => dispatch(addToCart(item))
+    addToCart: item => dispatch(addToCart(item))
 });
 
 

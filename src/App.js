@@ -13,9 +13,10 @@ import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.
 import Header  from './components/header/header.component';
 import SignUpSignInPage from './pages/sign-up-sign-in/sign-up-sign-in.component';
 import AccountInfoPage from './pages/account-info/account-info-page.component'
+import CheckOutPage from './pages/checkout/checkout.component';
+
 import {setCurrentUser} from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selectors'
-
 
 class App extends React.Component {
 
@@ -89,6 +90,7 @@ class App extends React.Component {
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
           <Route exact={true} path="/shop/" component={CollectionPreviewPage} />
+          <Route exact={true} path="/checkout/" component={CheckOutPage} />
           <Route exact={true} path='/shop/hats'  render={(props) => <CollectionFullViewPage {...props} collectionName='hats' />}/>
           <Route exact={true} path='/shop/sneakers'  render={(props) => <CollectionFullViewPage {...props} collectionName='sneakers' />}/>
           <Route exact={true} path='/shop/jackets'  render={(props) => <CollectionFullViewPage {...props} collectionName='jackets' />}/>
