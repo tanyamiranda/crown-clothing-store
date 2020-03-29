@@ -31,7 +31,7 @@ const AccountInfo = ({currentUser}) => {
             </div>
             <div className="buttons">
                 <CustomButton onClick={() => auth.signOut()}>SIGN OUT</CustomButton>
-                <CustomButton onClick={continueShopping} >Continue Shopping</CustomButton>
+                <CustomButton onClick={continueShopping} isActionButton={true} >Continue Shopping</CustomButton>
             </div>
         </div>
     )

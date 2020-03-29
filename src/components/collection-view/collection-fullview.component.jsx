@@ -11,8 +11,8 @@ const CollectionFullView = ({title, items}) => (
         <div className="preview">
             {
                 items.map(
-                    ({id, ...mapProps}) => (
-                        <CollectionItem key={id} {...mapProps}/>                    
+                    (item) => (
+                        <CollectionItem key={item.id} item={item}/>                    
                     )
                 )
             }

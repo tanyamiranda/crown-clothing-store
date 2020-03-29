@@ -124,10 +124,12 @@ class App extends React.Component {
 
 }
 
+// This adds the currenUser object to be accessible by the app
 const mapStateToProps = ({user}) => ({
   currentUser: user.currentUser
 })
 
+// This maps the setCurrentUser() reducer call to be used in the app.
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });

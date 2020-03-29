@@ -15,12 +15,8 @@ const CollectionPreview = ({count, title, routeName, items, match, history}) => 
                 items
                 .filter( (item,index) => index < count) // Shows only short list for preview page
                 .map(
-                    ({id, ...mapProps}) => (
-                        <CollectionItem key={id} {...mapProps}/>
-
-                    //item => (
-                    //<div key={item.id}>{item.name}</div>
-                    
+                    (item) => (
+                        <CollectionItem key={item.id} item={item}/>                    
                     )
                 )
             }
