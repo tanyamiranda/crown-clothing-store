@@ -6,9 +6,9 @@ import CustomButton from '../custom-button/custom-button.component';
 
 import {connect} from 'react-redux';
 
-import {addToCart} from '../../redux/cart/cart.actions'
+import {addItem} from '../../redux/cart/cart.actions'
 
-const CollectionItem = ({item, addToCart}) => {
+const CollectionItem = ({item, addItem}) => {
     
     const {name, price, imageUrl} = item; 
 
@@ -26,7 +26,7 @@ const CollectionItem = ({item, addToCart}) => {
                 <div className="price">${price}</div>            
             </div>  
             
-            <CustomButton onClick={() => addToCart(item)}>ADD TO CART</CustomButton>
+            <CustomButton onClick={() => addItem(item)}>ADD TO CART</CustomButton>
         </div>
     );
 }
@@ -35,7 +35,7 @@ const CollectionItem = ({item, addToCart}) => {
   
 // This maps the addToCart() reducer call to be used in the app.
 const mapDispatchToProps = dispatch => ({
-    addToCart: item => dispatch(addToCart(item))
+    addItem: item => dispatch(addItem(item))
 });
 
 
