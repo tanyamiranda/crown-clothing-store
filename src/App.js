@@ -8,8 +8,7 @@ import {connect} from 'react-redux';
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
-import CollectionPreviewPage from './pages/collections/collectionspreviewpage.component';
-import CollectionFullViewPage from './pages/collections/collectionsfullviewpage.component';
+import ShopPage from './pages/shop/shop.component';
 import Header  from './components/header/header.component';
 import SignUpSignInPage from './pages/sign-up-sign-in/sign-up-sign-in.component';
 import AccountInfoPage from './pages/account-info/account-info-page.component'
@@ -89,13 +88,8 @@ class App extends React.Component {
         <Header/>
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
-          <Route exact={true} path="/shop/" component={CollectionPreviewPage} />
+          <Route path="/shop/" component={ShopPage} />
           <Route exact={true} path="/checkout/" component={CheckOutPage} />
-          <Route exact={true} path='/shop/hats'  render={(props) => <CollectionFullViewPage {...props} collectionName='hats' />}/>
-          <Route exact={true} path='/shop/sneakers'  render={(props) => <CollectionFullViewPage {...props} collectionName='sneakers' />}/>
-          <Route exact={true} path='/shop/jackets'  render={(props) => <CollectionFullViewPage {...props} collectionName='jackets' />}/>
-          <Route exact={true} path='/shop/womens'  render={(props) => <CollectionFullViewPage {...props} collectionName='womens' />}/>
-          <Route exact={true} path='/shop/mens'  render={(props) => <CollectionFullViewPage {...props} collectionName='mens' />}/>
 
           {
           // If user is on SignUpSignInPage and is logged in, redirect to AccountInfoPage
