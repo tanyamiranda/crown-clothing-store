@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import CollectionFullView from '../../components/collection-view/collection-fullview.component';
+import CollectionFullView from '../../components/collection/collection-fullview.component';
 import {selectAllItemsInCollection} from '../../redux/shop/shop.selectors';
 
 const CollectionFullPage = ({collection}) => (

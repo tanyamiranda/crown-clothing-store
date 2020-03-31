@@ -5,9 +5,9 @@ import {withRouter} from 'react-router-dom';
 
 //import './collections-overview.styles.scss';
 
-import CollectionPreview from '../../components/collection-view/collection-preview.component';
+import CollectionPreview from '../../components/collection/collection-preview.component';
 
-import {selectCollections} from '../../redux/shop/shop.selectors';
+import {selectCollectionsPreview} from '../../redux/shop/shop.selectors';
 
 const CollectionsOverview = ({collections}) => (
 
@@ -15,7 +15,7 @@ const CollectionsOverview = ({collections}) => (
         { 
             collections.map(
                 ({id, ...collectionProps}) => (
-                    <CollectionPreview key={id} count={4} viewAll={false} {...collectionProps} />
+                    <CollectionPreview key={id} {...collectionProps} />
                 )
             )
         }
@@ -23,7 +23,7 @@ const CollectionsOverview = ({collections}) => (
 );
     
 const mapStateToProps = createStructuredSelector ({
-    collections : selectCollections
+    collections : selectCollectionsPreview
 });
 
 export default withRouter(connect(mapStateToProps)(CollectionsOverview)); 
