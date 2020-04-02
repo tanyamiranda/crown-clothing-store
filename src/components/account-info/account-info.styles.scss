@@ -29,7 +29,7 @@
     }
 
     .buttons {
-        width: 300px;
+        width: 350px;
         display: flex;
         justify-content: space-between;
         padding-top: 20px;
@@ -37,9 +37,13 @@
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
     .account-info {
       padding: 0 0 0 0;
       margin: auto;
+
+      .buttons {
+        width: 300px;
+      }
     }
   }
