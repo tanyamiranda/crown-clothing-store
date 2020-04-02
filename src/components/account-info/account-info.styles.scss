@@ -1,5 +1,5 @@
 .account-info {
-
+    width: 100%;
     display: flex;
     flex-direction: column;
     border-top: solid 0.5px silver;
@@ -29,9 +29,17 @@
     }
 
     .buttons {
-        width: 380px;
+        width: 300px;
         display: flex;
         justify-content: space-between;
         padding-top: 20px;
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+    .account-info {
+      padding: 0 0 0 0;
+      margin: auto;
+    }
+  }

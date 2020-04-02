@@ -8,7 +8,6 @@
   
   @media only screen and (max-width: 900px) {
     .sign-in-and-sign-up {
-      width: 100%;
       display: inline-block;
       margin: auto;
     }
@@ -20,5 +19,19 @@
     .sign-up {
       padding-top: 35px;
     }
+
+  }
+
+  @media only screen and (max-width: 600px) {
+    .sign-up, .sign-in {
+      width: 300px !important;
+      padding: 0 0 0 0;
+
+      .buttons {
+        display: inline-block;
+        width: 300px;
+      }
+    }
+
 
   }
