@@ -64,3 +64,13 @@
     }
   }
 }
+@media only screen and (max-width: 300px) {
+  .header {
+    .options {
+      .option {
+        padding: 5px 5px;
+        font-size: 14px;
+      }
+    }
+  }
+}
