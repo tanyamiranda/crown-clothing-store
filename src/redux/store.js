@@ -7,7 +7,12 @@ import {persistStore} from 'redux-persist';
 // the applyMiddleware() function can actually take
 // just the logger import, but we are using more 
 // objects in the future, so an array is better  
-const middlewareObjects = [logger];
+const middlewareObjects = [];
+
+//Only use logger in development environement
+if (process.env.NODE_ENV === 'development') {
+    middlewareObjects.push(logger);
+}
 
 // Using ...middlewareObjects spreads all objects as 
 // individual parameters in the function. Otherwise,
