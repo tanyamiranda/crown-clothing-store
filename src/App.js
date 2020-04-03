@@ -15,7 +15,9 @@ import AccountInfoPage from './pages/account-info/account-info-page.component'
 import CheckOutPage from './pages/checkout/checkout.component';
 
 import {setCurrentUser} from './redux/user/user.actions';
-import {selectCurrentUser} from './redux/user/user.selectors'
+import {selectCurrentUser} from './redux/user/user.selectors';
+
+import Footer from './components/footer/footer.component';
 
 class App extends React.Component {
 
@@ -116,6 +118,7 @@ class App extends React.Component {
           />
 
         </Switch>
+        <Footer/>
         </ScrollToTop>
       </div>
       );
