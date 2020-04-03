@@ -1,6 +1,7 @@
 .checkout-outer {
   width: 100%;
   border-top: 0.5px solid silver;
+  padding: 5px 5px;
 }
 
 .checkout-page {
@@ -16,7 +17,7 @@
     padding: 10px 0;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid darkgrey;
+    border-bottom: 0.5px solid silver;
     text-transform: capitalize;
 
     .header-image {

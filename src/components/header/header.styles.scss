@@ -56,8 +56,11 @@
 
 @media only screen and (max-width: 600px) {
   .header {
+    height: 60px;
+
     .options {
       width: 75%;
+      padding-top: 20px;
     }
     .logo-name {
       display: none
