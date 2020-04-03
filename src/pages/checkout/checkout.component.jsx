@@ -12,6 +12,8 @@ import StripeCheckoutButton from '../../components/stripe-button/stripe-button.c
 const CheckOutPage = ({cartItems, cartTotalCost}) => (
     <div className="checkout-outer">
         <div className="checkout-page">
+            <h1 className="title">Shopping Cart</h1>
+
             <div className="checkout-header">
                 <div className="header-image">Product</div>
                 <div className="header-name">Description</div>
