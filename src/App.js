@@ -16,8 +16,10 @@ import CheckOutPage from './pages/checkout/checkout.component';
 
 import {setCurrentUser} from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selectors';
-
 import Footer from './components/footer/footer.component';
+
+import UtilitiesPage from './pages/utilities/utilities.component';
+
 
 class App extends React.Component {
 
@@ -67,12 +69,10 @@ class App extends React.Component {
             })
 
           });       
-      
-        }
-        else {
-          setCurrentUser(null);
         }
         
+        setCurrentUser(userAuth);
+               
       } 
 
     );
@@ -92,6 +92,8 @@ class App extends React.Component {
           <Route exact={true} path="/" component={HomePage} />
           <Route path="/shop/" component={ShopPage} />
           <Route exact={true} path="/checkout/" component={CheckOutPage} />
+          <Route exact={true} path="/utilities/" component={UtilitiesPage} />
+          
 
           {
           // If user is on SignUpSignInPage and is logged in, redirect to AccountInfoPage

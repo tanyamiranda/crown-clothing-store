@@ -3,6 +3,18 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import FIREBASE_CONFIG from './firebase.config';
 
+// Initialize Firebase with the config key
+firebase.initializeApp(FIREBASE_CONFIG);
+
+export const auth = firebase.auth();
+
+export const firestore = firebase.firestore();
+
+// Setup Google Signing with popup
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({promt : 'select_account'});
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
 /*
     This method checks firebase for the user, and if it doesn't
     exists, it creates a record.
@@ -17,6 +29,8 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
     const userRef = await firestore.doc(`users/${userAuth.uid}`); 
 
     const snapshot = await userRef.get();
+
+    console.log("snapshot=", snapshot);
 
     if (!snapshot.exists) {
         
@@ -36,11 +50,8 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
         }
         catch (error) {
-            //console.log("Error creating user profile.", error);
+            console.log("Error creating user profile.", error);
         }
-    }
-    else {
-        //console.log("User already exists...");
     }
 
     return userRef;
@@ -48,17 +59,21 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 }
 
 
+export const addCollectionAndDocuments = async (collectionKey, ObjectsToAdd) => {
 
-// Initialize Firebase with the config key
-firebase.initializeApp(FIREBASE_CONFIG);
+    const collectionRef = firestore.collection(collectionKey);
+    
+    const batch = firestore.batch();
 
-export const auth = firebase.auth();
+    ObjectsToAdd.forEach( obj => {
 
-export const firestore = firebase.firestore();
+        const newDocRef = collectionRef.doc();
+        batch.set(newDocRef, obj);
+    
+    });
 
-// Setup Google Signing with popup
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({promt : 'select_account'});
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+    return await batch.commit();
+
+}
 
 export default firebase;
