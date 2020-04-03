@@ -7,7 +7,7 @@ const Footer = () => (
         <div className="footer">
             <div className="copyright">@2020 Urban Dragon Wear</div>
             <div className="contact-info">
-                Urban Dragon Wear<br/>
+                A Portfolio Project<br/>
                 2020 React Street<br/>
                 Mount Webdev, NY 11111<br/>
                 212-111-1111<br/>
