@@ -30,8 +30,6 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
     const snapshot = await userRef.get();
 
-    console.log("snapshot=", snapshot);
-
     if (!snapshot.exists) {
         
         const {displayName,  email} = userAuth;
@@ -75,5 +73,32 @@ export const addCollectionAndDocuments = async (collectionKey, ObjectsToAdd) => 
     return await batch.commit();
 
 }
+
+export const convertCollectionSnapshotToMap = (collectionsSnapshot) => {
+
+    const newCollection = collectionsSnapshot.docs.map(
+        doc => {
+            const {title, items} = doc.data();
+            return  {
+                id: doc.id,
+                title,
+                routeName: encodeURI(title.toLowerCase()),
+                items
+            };
+        }
+    );
+
+    // This reducer is creating a map of the collections whose 
+    // keys are the collection titles. 
+    return newCollection.reduce( 
+        (accumulator, collection) => {
+            accumulator[collection.title.toLowerCase()] = collection;
+            return accumulator;
+        }, 
+        {} // 2nd parameter to reduce() func is an empty object
+    );
+
+}
+
 
 export default firebase;

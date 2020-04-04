@@ -5,20 +5,22 @@ import {connect} from 'react-redux';
 
 import {selectCurrentUser} from '../../redux/user/user.selectors';
 import {addCollectionAndDocuments} from '../../firebase/firebase.utils';
-import {selectCollectionsPreview} from '../../redux/shop/shop.selectors';
 import CustomButton from '../../components/custom-button/custom-button.component';
+
+import SHOP_DATA from './shop.data';
 
 import './utilities.styles.scss';
 
 class UtilitiesPage extends React.Component {
 
+
     refreshCollections = event => {
 
-        const {collectionsArray} = this.props;
+        const newShopData = Object.keys(SHOP_DATA).map(key => SHOP_DATA[key]); 
 
-        console.log("adding collection = ", 
-            addCollectionAndDocuments('collections', collectionsArray.map( ({title, routeName, items}) => ({title, routeName, items}) ))
-        );
+        console.log("newShopData=", newShopData);
+        
+        addCollectionAndDocuments('collections', newShopData.map( ({sortOrder, title, items}) => ({sortOrder, title, items}) ))
 
         alert('Shop Collections Refreshed.')
         
@@ -59,7 +61,6 @@ class UtilitiesPage extends React.Component {
 // This adds the currenUser object to be accessible by the app
 const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
-    collectionsArray: selectCollectionsPreview
 });
 
 export default connect(mapStateToProps) (UtilitiesPage); 

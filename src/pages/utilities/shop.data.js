@@ -1,6 +1,9 @@
+//THIS FILE WAS USED INITIALLY BEFORE MOVING DATA TO FIREBASE
+//BUT NOW IT IS USED FOR UTILITY LOADING ONLY.
+
 const SHOP_DATA = {
     hats: {
-      id: 1,
+      sortOrder: 1,
       title: 'Hats',
       routeName: 'hats',
       items: [
@@ -61,7 +64,7 @@ const SHOP_DATA = {
       ]
     },
     sneakers: {
-      id: 2,
+      sortOrder: 2,
       title: 'Sneakers',
       routeName: 'sneakers',
       items: [
@@ -116,7 +119,7 @@ const SHOP_DATA = {
       ]
     },
     jackets: {
-      id: 3,
+      sortOrder: 3,
       title: 'Jackets',
       routeName: 'jackets',
       items: [
@@ -153,7 +156,7 @@ const SHOP_DATA = {
       ]
     },
     womens: {
-      id: 4,
+      sortOrder: 4,
       title: 'Womens',
       routeName: 'womens',
       items: [
@@ -202,7 +205,7 @@ const SHOP_DATA = {
       ]
     },
     mens: {
-      id: 5,
+      sortOrder: 5,
       title: 'Mens',
       routeName: 'mens',
       items: [
