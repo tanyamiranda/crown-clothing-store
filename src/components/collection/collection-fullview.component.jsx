@@ -6,9 +6,7 @@ import './collection-view.styles.scss';
 import CollectionItem from '../collection-item/collection-item.component';
 
 const CollectionFullView = ({collection}) => {
-    
-    console.log("collection=", collection);
-    
+       
     return (
 
         <div className="collection-view">

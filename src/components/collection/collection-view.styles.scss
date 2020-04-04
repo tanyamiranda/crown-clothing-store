@@ -1,7 +1,7 @@
 .collection-view {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-top: solid 0.5px silver;
 
   .title {
@@ -29,11 +29,17 @@
     .preview {
       grid-template-columns: 1fr 1fr 1fr;
     }
+    .preview > div:nth-child(4) {
+      display: none;
+    }
   }
   
   @media only screen and (max-width: 600px) {
     .preview {
       grid-template-columns: 1fr 1fr;
+    }
+    .preview > div:nth-child(3) {
+      display: none;
     }
   }
   
