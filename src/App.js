@@ -45,7 +45,9 @@ class App extends React.Component {
 
     const {setCurrentUser} = this.props;
 
-    // onAuthStateChanged returns the associated logout function call 
+    // onAuthStateChanged() sets a function subscription to 
+    // execute whenever the authentication state changes.
+    // It returns the associated logout function call 
     // so lets assign it to our function placeholder above
     this.unsubscribeFromAuth = auth.onAuthStateChanged(
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
-import {withRouter, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 import './checkout.styles.scss';
 
@@ -39,9 +39,9 @@ const CheckOutPage = ({cartItems, cartTotalCost}) => (
             }
             <div className="test-warning">
                 Test Credit Card: 4242 4242 4242 4242
-                <br/>Security Code: 123
+                <br/>Security Code: 123, 
                 <br/>Expiration : Any Future Date
-                <br/><Link onClick={()=> window.open("https://stripe.com/docs/testing")}>Visit Stripe Testing for more cards.</Link>    
+                <div className="stripe-link" onClick={()=> window.open("https://stripe.com/docs/testing")}>Visit Stripe Testing for more cards.</div>    
             </div>
         </div>
     </div>

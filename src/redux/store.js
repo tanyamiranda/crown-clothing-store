@@ -2,12 +2,13 @@ import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 import rootReducer from './root-reducer';
 import {persistStore} from 'redux-persist';
+import thunk from 'redux-thunk';
 
 // This object is create to hold all middleware calls
 // the applyMiddleware() function can actually take
 // just the logger import, but we are using more 
 // objects in the future, so an array is better  
-const middlewareObjects = [];
+const middlewareObjects = [thunk];
 
 //Only use logger in development environement
 if (process.env.NODE_ENV === 'development') {

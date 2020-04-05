@@ -58,10 +58,17 @@
   .test-warning {
     text-align: right;
     color: red;
-    font-size: 16px;
+    font-size: small;
     font-weight: bold;
     margin-left: auto;
+
+    .stripe-link {
+      cursor: pointer;
+      text-decoration: underline;
+
+    }
   }
+
 }
 
 
