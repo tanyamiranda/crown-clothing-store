@@ -1,14 +1,14 @@
 import React from 'react';
-import {auth} from '../../firebase/firebase.utils';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
 import './account-info.styles.scss';
 
 import CustomButton from '../custom-button/custom-button.component';
-import {selectCurrentUser} from '../../redux/user/user.selectors'
+import {selectCurrentUser} from '../../redux/user/user.selectors';
+import {signOutStart} from '../../redux/user/user.actions';
 
-const AccountInfo = ({currentUser, history}) => (
+const AccountInfo = ({currentUser, history, signOutStart}) => (
 
     <div className="account-info">
         <h1 className="title">Account Details :</h1>
@@ -23,7 +23,7 @@ const AccountInfo = ({currentUser, history}) => (
             </span>
         </div>
         <div className="buttons">
-            <CustomButton onClick={() => auth.signOut()}>SIGN OUT</CustomButton>
+            <CustomButton onClick={signOutStart}>SIGN OUT</CustomButton>
             <CustomButton onClick={() => history.push('/shop')} isActionButton={true} >Continue Shopping</CustomButton>
         </div>
     </div>
@@ -34,5 +34,9 @@ const mapStateToProps = state => ({
     currentUser : selectCurrentUser(state)
 });
 
-export default withRouter(connect(mapStateToProps) (AccountInfo));
+const mapDispatchToProps = (dispatch) => ({
+    signOutStart: () => dispatch(signOutStart())
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps) (AccountInfo));
 

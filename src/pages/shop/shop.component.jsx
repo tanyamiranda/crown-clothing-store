@@ -8,7 +8,7 @@ import './shop.styles.scss';
 import CollectionsOverviewContainer from '../collections/collections-overview.container';
 import CollectionFullViewContainer from '../collections/collection.container';
 import {selectIsCollectionsLoaded} from '../../redux/shop/shop.selectors';
-import {fetchCollectionStartAsync} from '../../redux/shop/shop.actions';
+import {fetchCollectionsStart} from '../../redux/shop/shop.actions';
 
 class ShopPage extends React.Component{
 
@@ -18,8 +18,8 @@ class ShopPage extends React.Component{
 
         //Only load collection upon app refresh, not each time this component loads.
         if (!isCollectionsLoaded) {
-            const {fetchCollectionStartAsync} = this.props;
-            fetchCollectionStartAsync();
+            const {fetchCollectionsStart} = this.props;
+            fetchCollectionsStart();
         }
         
     }
@@ -31,16 +31,8 @@ class ShopPage extends React.Component{
         return (
 
             <div className="shop-page">
-                <Route 
-                    exact 
-                    path ={`${match.path}`} 
-                    component= {CollectionsOverviewContainer}
-                />
-
-                <Route 
-                    path={`${match.path}:collectionId`} 
-                    component = {CollectionFullViewContainer}
-                />
+                <Route exact path ={`${match.path}`} component= {CollectionsOverviewContainer} />
+                <Route path={`${match.path}:collectionId`} component = {CollectionFullViewContainer} />
             </div>
 
         )
@@ -52,7 +44,7 @@ const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-    fetchCollectionStartAsync : () => dispatch(fetchCollectionStartAsync())
+    fetchCollectionsStart : () => dispatch(fetchCollectionsStart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopPage); 

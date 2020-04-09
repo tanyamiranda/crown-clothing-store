@@ -10,10 +10,10 @@ export const auth = firebase.auth();
 
 export const firestore = firebase.firestore();
 
-// Setup Google Signing with popup
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({promt : 'select_account'});
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+// Setup Google sign-in with popup
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({promt : 'select_account'});
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 /*
     This method checks firebase for the user, and if it doesn't
@@ -100,5 +100,17 @@ export const convertCollectionSnapshotToMap = (collectionsSnapshot) => {
 
 }
 
+
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged( 
+            userAuth => {
+                unsubscribe();
+                resolve(userAuth);
+            }, 
+            reject
+        )}
+    );
+}
 
 export default firebase;
