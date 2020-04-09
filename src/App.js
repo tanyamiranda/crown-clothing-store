@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 import {createStructuredSelector} from 'reselect';
@@ -17,71 +17,62 @@ import Footer from './components/footer/footer.component';
 import UtilitiesPage from './pages/utilities/utilities.component';
 import {checkUserSession} from './redux/user/user.actions';
 
-class App extends React.Component {
+const App = ({checkUserSession, currentUser}) => {
 
-  componentDidMount() {
-    const {checkUserSession} = this.props;
+  useEffect(() => {
     checkUserSession();
-  }
+  }, [checkUserSession]);
+ 
+  return (
+    <div>
+      <ScrollToTop>
+      <Header/>
+      <Switch>
+        <Route exact={true} path="/" component={HomePage} />
+        <Route path="/shop/" component={ShopPage} />
+        <Route exact={true} path="/checkout/" component={CheckOutPage} />
+        <Route exact={true} path="/utilities/" component={UtilitiesPage} />
+        
+        {
+        // If user is on SignUpSignInPage and is logged in, redirect to AccountInfoPage
+        }
+        <Route exact={true} path="/signin" render = 
+          {() => 
+            currentUser ? (
+            <Redirect to="/account" />
+            ) : (
+            <SignUpSignInPage />)
+          } 
+        />
 
-  //unsubscribeFromAuth = null;
+        {
+        // If user is on AccountInfoPage page and has logged out, redirect to SignUpSignInPage
+        }
+        <Route exact={true} path="/account" render = 
+          {() => 
+            !currentUser ? (
+            <Redirect to="/signin" />
+            ) : (
+            <AccountInfoPage />)
+          } 
+        />
 
-  //componentWillMount() {
-  //  this.unsubscribeFromAuth();
-  //}
+      </Switch>
+      <Footer/>
+      </ScrollToTop>
+    </div>
+    );
 
-  render () {
-
-    return (
-      <div>
-        <ScrollToTop>
-        <Header/>
-        <Switch>
-          <Route exact={true} path="/" component={HomePage} />
-          <Route path="/shop/" component={ShopPage} />
-          <Route exact={true} path="/checkout/" component={CheckOutPage} />
-          <Route exact={true} path="/utilities/" component={UtilitiesPage} />
-          
-          {
-          // If user is on SignUpSignInPage and is logged in, redirect to AccountInfoPage
-          }
-          <Route exact={true} path="/signin" render = 
-            {() => 
-              this.props.currentUser ? (
-              <Redirect to="/account" />
-              ) : (
-              <SignUpSignInPage />)
-            } 
-          />
-
-          {
-          // If user is on AccountInfoPage page and has logged out, redirect to SignUpSignInPage
-          }
-          <Route exact={true} path="/account" render = 
-            {() => 
-              !this.props.currentUser ? (
-              <Redirect to="/signin" />
-              ) : (
-              <AccountInfoPage />)
-            } 
-          />
-
-        </Switch>
-        <Footer/>
-        </ScrollToTop>
-      </div>
-      );
-  }
 
 }
 
 // This adds the currenUser object to be accessible by the app
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   checkUserSession : () => dispatch(checkUserSession())
-})
+});
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
