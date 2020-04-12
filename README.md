@@ -1,4 +1,4 @@
-# Crown Clothing Store (A.K.A Urban Dragon Wear)
+# Crown Clothing Store
 
 Online Clothing Store - React 2020 CourseProject:
 https://www.udemy.com/course/complete-react-developer-zero-to-mastery/
