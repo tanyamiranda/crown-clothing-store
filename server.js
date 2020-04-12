@@ -47,14 +47,14 @@ app.post('/payment', (req, res) => {
     stripe.charges.create(body, (stripeErr, stripeRes) => {
 
         if (stripeErr) {
-            console.log("stripeErr:",stripeErr);
+            console.log("Payment Processing Successful.");
             res.status(500).send({ error: stripeErr});
         }
         else {
+            console.log("Payment Processing Failed.");
             console.log("stripeRes:",stripeRes);
             res.status(200).send({ success: stripeRes});
         }
     });
 
-    console.log('Payment Request Processed.');
 });
