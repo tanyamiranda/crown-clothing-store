@@ -19,7 +19,7 @@ const Header = ({currentUser, hidden, signOutStart}) => (
             <DragonLogo/>
         </Link>
         <Link className="logo-name" to="/">
-            Urban Dragon Wear
+            <span className="store-name">Urban </span><span className="store-name">Dragon </span><span className="store-name">Wear</span>
         </Link>
         
         <div className="options">
