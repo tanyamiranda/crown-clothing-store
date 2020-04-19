@@ -3,12 +3,17 @@ import {withRouter} from 'react-router-dom';
 
 import './collection-view.styles.scss';
 
+import ErrorMessage from '../error-message/error-message.component';
 import CollectionItem from '../collection-item/collection-item.component';
 
 const CollectionFullView = ({collection}) => {
        
-    return (
-
+    if (!collection)
+        return(
+            <ErrorMessage />
+        )
+    else 
+        return (
         <div className="collection-view">
             <h1 className="title">{collection.title.toUpperCase()} COLLECTION</h1>
             <div className="preview">
@@ -20,9 +25,7 @@ const CollectionFullView = ({collection}) => {
                     )
                 }
             </div>
-
         </div>
-
     );
 }
 

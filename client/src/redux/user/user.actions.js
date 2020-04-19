@@ -56,4 +56,16 @@ export const signUpFailure = (error) => ({
     payload: error
 });
 
- 
+export const fetchCurrentUserOrdersStart = () => ({
+    type : UserActionTypes.FETCH_CURRENT_USER_ORDERS_START
+});
+
+export const fetchCurrentUserOrdersSuccess = (orderHistory) => ({
+    type : UserActionTypes.FETCH_CURRENT_USER_ORDERS_SUCCESS,
+    payload: orderHistory
+});
+
+export const fetchCurrentUserOrdersFailure = (error) => ({
+    type: UserActionTypes.FETCH_CURRENT_USER_ORDERS_FAILURE,
+    payload: error
+});

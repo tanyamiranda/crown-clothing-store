@@ -56,21 +56,87 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
 }
 
+export const getOrdersByOrderIdAndEmail = async (orderId, email) => {
+
+    try {
+        const searchRef = firestore.collection("orders").where("id", "==", orderId).where("email", "==", email);
+        const snapshot = await searchRef.get();
+        const searchMap = await convertOrdersSnapshotToMap(snapshot);
+        return searchMap;
+    }
+    catch (error) {
+        console.log("Error in getOrdersByOrderIdAndEmail().", error);
+    }
+
+}
+
+export const getRegisteredUserOrders = async (currentUser) => {
+
+    try {
+        const searchRef = firestore.collection("orders").where("email", "==", currentUser.email);
+        const snapshot = await searchRef.get();
+        const searchMap = await convertOrdersSnapshotToMap(snapshot);
+        return searchMap;
+    }
+    catch (error) {
+        console.log("Error in getRegisteredUserOrders().", error);
+    }
+
+}
+
+// Returns empty array if collection is empty
+export const convertOrdersSnapshotToMap = (ordersSnapshot) => {
+    const newCollection = ordersSnapshot.docs.map(
+        doc => {
+            const {createdDate, id, currency, email, phone, orderStatus, orderTotal, orderItems, shippingInfo, paymentInfo} = doc.data();
+            return  {
+                id,
+                createdDate, 
+                currency, 
+                email, 
+                phone, 
+                orderStatus, 
+                orderTotal, 
+                orderItems, 
+                shippingInfo, 
+                paymentInfo
+            };
+        }
+    );
+
+    // This reducer is creating a map of the oredrs whose 
+    // keys are the orderids 
+    //return newCollection.reduce( 
+    //    (accumulator, order) => {
+    //        accumulator[order.id] = order;
+    //        return accumulator;
+    //    }, 
+    //    {} // 2nd parameter to reduce() func is an empty object
+    //);
+
+    return newCollection;
+}
+
 
 export const addCollectionAndDocuments = async (collectionKey, ObjectsToAdd) => {
 
-    const collectionRef = firestore.collection(collectionKey);
-    
-    const batch = firestore.batch();
+    try {
+        const collectionRef = firestore.collection(collectionKey);
+        
+        const batch = firestore.batch();
 
-    ObjectsToAdd.forEach( obj => {
+        ObjectsToAdd.forEach( obj => {
 
-        const newDocRef = collectionRef.doc();
-        batch.set(newDocRef, obj);
-    
-    });
+            const newDocRef = collectionRef.doc();
+            batch.set(newDocRef, obj);
+        
+        });
 
-    return await batch.commit();
+        return await batch.commit();
+    }
+    catch (error) {
+        console.log("Error in addCollectionAndDocuments().", error);
+    }
 
 }
 
@@ -112,5 +178,6 @@ export const getCurrentUser = () => {
         )}
     );
 }
+
 
 export default firebase;

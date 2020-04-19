@@ -36,10 +36,12 @@ console.log('Setting up Stripe Payment Route...')
 
 // Setup Stripe Payment Route
 app.post('/payment', (req, res) => {
+
     const body = {
         source: req.body.token.id,
         amount: req.body.amount,
         currency: 'usd'  // this can be passed in aswell
+        
     }
 
     console.log('Processing Payment...');
@@ -47,14 +49,19 @@ app.post('/payment', (req, res) => {
     stripe.charges.create(body, (stripeErr, stripeRes) => {
 
         if (stripeErr) {
-            console.log("Payment Processing Successful.");
+            console.log("Payment Processing Error.");
             res.status(500).send({ error: stripeErr});
         }
         else {
-            console.log("Payment Processing Failed.");
-            console.log("stripeRes:",stripeRes);
+            console.log("Payment Processing Successful.");
             res.status(200).send({ success: stripeRes});
         }
     });
 
 });
+
+//setup success redirect
+app.use((req, res, next) => {
+    req.user = { id: 'asdfasdfasdfasdf' };
+    next();
+  });

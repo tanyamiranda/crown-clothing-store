@@ -1,15 +1,30 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects';
 
 import UserActionTypes from './user.types';
-import {auth, googleProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
+import {auth, googleProvider, createUserProfileDocument, getCurrentUser, getRegisteredUserOrders } from '../../firebase/firebase.utils';
 import {
     signInSuccess, 
     signInFailure, 
     signOutSuccess, 
     signOutFailure,
     signUpSuccess,
-    signUpFailure
+    signUpFailure, 
+    fetchCurrentUserOrdersFailure,
+    fetchCurrentUserOrdersSuccess
 } from './user.actions';
+
+
+
+export function* fetchCurrentUserOrders() {
+    try {
+        const currentUser = yield getCurrentUser();
+        const orderMap = yield getRegisteredUserOrders(currentUser);
+        yield put(fetchCurrentUserOrdersSuccess(orderMap));
+    }
+    catch (error) {
+        yield put(fetchCurrentUserOrdersFailure(error.message));
+    }
+}
 
 export function* getSnapshotFromUserAuth(userAuth, additionalData){
     try {
@@ -51,13 +66,8 @@ export function* isUserAuthenticated() {
 
     try{
         const userAuth = yield getCurrentUser();
-        
-        // If user is NOT logged in, just return.
         if (!userAuth) return;
-
-        // Else, get user snapshot
         yield getSnapshotFromUserAuth(userAuth);
-
     }
     catch (error) {
         yield put (signInFailure(error));
@@ -114,6 +124,14 @@ export function* onEmailSignInStart() {
     yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START,signInWithEmail);
 }
 
+export function* onSignInSuccessFetchOrders() {
+    yield takeLatest(UserActionTypes.SIGN_IN_SUCCESS, fetchCurrentUserOrders)
+}
+
+export function* onFetchCurrentUserOrdersStart() {
+    yield takeLatest(UserActionTypes.FETCH_CURRENT_USER_ORDERS_START, fetchCurrentUserOrders)
+}
+
 /*
 The userSagas is a list of sagas that is loaded upon initialization of the application. 
 It defines which actions to listen for. Specifically, the onGoogleSignInStart call
@@ -131,7 +149,9 @@ export function* userSagas() {
         call(onCheckUserSession),
         call(onUserSignout),
         call(onSignUpSuccess),
-        call(onSignUpStart)
+        call(onSignUpStart),
+        call(onSignInSuccessFetchOrders),
+        call(onFetchCurrentUserOrdersStart)
     ]);
 
 }

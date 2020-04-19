@@ -1,80 +1,83 @@
 .header {
-    height: 70px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25px;
-  
-    .logo-container {
-      height: 100%;
-      width: 70px;
-      margin-left: 10px;
-      margin-top: 5px;
-    }
-  
-    .logo-name {
-      font-size: 33px;
-      margin: auto;
-      margin-left: 20px;
-    }
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
 
-    .options {
-      width: 50%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      cursor: pointer;
-  
-      .option {
-        padding: 10px 15px;
-      }
-
-    }
-
-    .welcome-message {
-      color: green;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      font-size:18px;
+  .logo-container {
+    height: 100%;
+    width: 250px;
+    margin-left: 10px;
+    margin-top: 5px;
+    
+    svg {
+      width: 100%;
     }
   }
-  
+
+  .options {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    padding-top: 20px;
+
+    .option {
+      padding: 10px 15px;
+    }
+
+  }
+
+}
+
 @media only screen and (max-width: 800px) {
   .header {
     .options {
       .option {
-        padding: 10px 10px;
+        padding: 8px 8px;
       }
     }
-    .logo-name {
-      font-size: 28px;
-      margin-left: 10px;
-    }
+
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
+
   .header {
-    height: 60px;
+    display: inline;
+    margin: auto;
+    
+    .logo-container {
+      display: block;
+      margin: auto;
+      text-align: center;
+      padding: 10px;
+    }
 
     .options {
-      width: 75%;
-      padding-top: 20px;
+      width: 100%;
+      display: block;
+      margin: auto;
+      text-align: center;
+      padding: 0px;
+      border-top: 0.5px solid silver;
+
+      .option {
+        display: inline-block;
+        padding-bottom: 10px;
+      }
     }
-    .logo-name {
-      display: none
-    }
-  }
+    
+}
 }
 @media only screen and (max-width: 340px) {
   .header {
     .options {
       .option {
-        padding: 5px 5px;
         font-size: 14px;
+        padding-bottom: 12px;
       }
     }
   }
