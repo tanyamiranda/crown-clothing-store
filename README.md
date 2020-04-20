@@ -1,15 +1,15 @@
 # Urban Dragon Wear - With Backend Server Stripe Processing
 
-Hosted on Heroku:
+Hosted on Heroku:<br/>
 https://urbandragonwear.herokuapp.com/
 
-Part of the [Complete React Developer in 2020](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/) course on Udemy.com:<br/>
+Part of the Complete React Developer in 2020 course on Udemy.com:<br/>
 https://www.udemy.com/course/complete-react-developer-zero-to-mastery/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app): <br/>
+This project was bootstrapped with Create React App:<br/>
 https://github.com/facebook/create-react-app
 
-## Local Dev Setup
+## Local Dev Environment Setup
 
 This project has a backend server. To start yarn server and yarn client simultaneously, execute the following command at the project's root folder, as defined in the package.json file:
 
@@ -17,7 +17,7 @@ This project has a backend server. To start yarn server and yarn client simultan
 
 ## Additional Info:
 
-On 4-19-2020, "merged" with urbandragonwear front-end-only app code. 
+On 4-19-2020, "merged" with [urbandragonwear](https://github.com/tanyamiranda/urbandragonwear) front-end-only app code. 
 
 Along with the course content, additional features added to the project:
 - New redux-saga actions for user and cart, as well as new collection of actions for order processing.
