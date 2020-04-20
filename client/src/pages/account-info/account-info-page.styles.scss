@@ -6,7 +6,6 @@
     padding: 20px 20px;
 
     .account-info {
-
         width: 500px;
         margin: auto;
 
@@ -69,13 +68,15 @@
 
 @media only screen and (max-width: 600px) {
     .account-info-wrapper {
+        padding: 10px 10px;
+
         .account-info {
             width: 100%;
             padding: 0 0;
             margin: auto;
 
             .order-history {
-                width: 350px;
+                width: 100%;
             }
             .buttons {
                 width: 300px;
@@ -89,9 +90,12 @@
         padding: 10px 10px;
 
         .account-info { 
-            
-            .order-history, .details {
+            .details {
                 width: 100%;
+
+                .detail {
+                    grid-template-columns: 30% 70%;
+                }
             }
 
             .buttons {
