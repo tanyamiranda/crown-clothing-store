@@ -15,7 +15,7 @@ const OrderDetails = ({order}) => (
                             </div>
                             <div className="detail">
                                 <div className="label">Date Created:</div>
-                                <div>{formatDisplayDate(order.createdDate)}</div>
+                                <div>{formatDisplayDate(order.id)}</div>
                             </div>
                             <div className="detail">
                                 <div className="label">Order Total:</div>

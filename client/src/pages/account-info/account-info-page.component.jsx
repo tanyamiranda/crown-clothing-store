@@ -48,7 +48,7 @@ const AccountInfoPage = ({currentUser, history, signOutStart, orderHistory}) => 
                             orderHistory.map(order => (
                                 <div className="detail" key={order.id} >
                                     <span><Link className="link" to={`/orderdetails/${order.id}`}>{order.id}</Link></span>
-                                    <span>{formatDisplayDate(order.createdDate)}</span>
+                                    <span>{formatDisplayDate(order.id)}</span>
                                     <span>{formatDisplayDollarValue(order.orderTotal)}</span>
                                     <span>{order.orderStatus}</span>                                    
                                 </div>
