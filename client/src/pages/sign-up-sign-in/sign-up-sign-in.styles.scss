@@ -1,12 +1,22 @@
-.sign-in-and-sign-up {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 20px;
-    border-top: 0.5px solid silver;
-  }
+.sign-in-and-sign-up-wrapper {
+  width: 100%;
+  display: flex;
+  border-top: 0.5px solid silver;
+  margin: auto;
   
-  @media only screen and (max-width: 900px) {
+  .sign-in-and-sign-up {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+      margin: auto;
+      
+  }
+}  
+ 
+@media only screen and (max-width: 900px) {
+  .sign-in-and-sign-up-wrapper {
     .sign-in-and-sign-up {
       display: inline-block;
       margin: auto;
@@ -21,8 +31,10 @@
     }
 
   }
+}
 
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
+  .sign-in-and-sign-up-wrapper {
     .sign-up, .sign-in {
       width: 300px !important;
       padding: 0 0 0 0;
@@ -32,6 +44,5 @@
         width: 300px;
       }
     }
-
-
   }
+}

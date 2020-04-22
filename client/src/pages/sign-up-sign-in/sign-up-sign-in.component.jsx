@@ -8,9 +8,11 @@ import SignUp from '../../components/sign-up/sign-up.component';
 
 const SignUpSignInPage = () => (
     
-    <div className="sign-in-and-sign-up">
-        <SignIn />
-        <SignUp />
+    <div className="sign-in-and-sign-up-wrapper">
+        <div className="sign-in-and-sign-up">
+            <SignIn />
+            <SignUp />
+        </div>
     </div>
     
 );
