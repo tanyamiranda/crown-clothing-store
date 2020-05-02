@@ -43,7 +43,6 @@ const App = ({checkUserSession, currentUser}) => {
             <Route path="/shop/" component={ShopPage} />
             <Route exact={true} path="/checkout/" component={CheckOutPage} />
             <Route exact={true} path="/utilities/" component={UtilitiesPage} />
-            <Route path="/orderdetails/:orderId" component={AccountOrderDetailsPage} />
             <Route exact={true} path="/ordersearch/" component={OrderSearchPage} />  
             <Route exact={true} path="/confirmation/" component={OrderConfirmationPage} />  
                   
@@ -68,6 +67,17 @@ const App = ({checkUserSession, currentUser}) => {
                 <Redirect to="/signin" />
                 ) : (
                 <AccountInfoPage />)
+              } 
+            />
+            {
+            // If user is on Account Order Details page and has logged out, redirect to SignUpSignInPage
+            }
+            <Route path="/orderdetails/:orderId" render =
+              {() => 
+                !currentUser ? (
+                <Redirect to="/signin" />
+                ) : (
+                <AccountOrderDetailsPage />)
               } 
             />
 
