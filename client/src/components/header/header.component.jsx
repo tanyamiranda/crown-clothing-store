@@ -5,7 +5,7 @@ import {createStructuredSelector} from 'reselect';
 
 import './header.styles.scss';
 
-import {ReactComponent as DragonLogo} from '../../assets/logo.svg';
+import {ReactComponent as YinYangLogo} from '../../assets/yin-yang.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 import {selectCurrentUser} from '../../redux/user/user.selectors';
@@ -15,8 +15,9 @@ import {signOutStart} from '../../redux/user/user.actions';
 const Header = ({currentUser, hidden, signOutStart}) => (
 
     <div className="header">
-        <Link className="logo-container" to="/">
-            <DragonLogo/>
+        <Link to="/" className="store-name-logo">
+            <div className="logo-container"><YinYangLogo/></div>
+            <span className="store-name">Urban Dragon Wear</span>          
         </Link>
         
         <div className="options">

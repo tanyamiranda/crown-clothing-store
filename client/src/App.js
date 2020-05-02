@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import './App.css';
 
 import Header  from './components/header/header.component';
+import BannerMessage from './components/banner-message/banner-message.component';
 import Footer from './components/footer/footer.component';
 import {selectCurrentUser} from './redux/user/user.selectors';
 import {checkUserSession} from './redux/user/user.actions';
@@ -34,6 +35,7 @@ const App = ({checkUserSession, currentUser}) => {
     <div>
       <ScrollToTop>
       <Header/>
+      <BannerMessage/>
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />} >

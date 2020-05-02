@@ -1,17 +1,30 @@
+
+
 .header {
+  background-color: black;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
 
-  .logo-container {
-    height: 100%;
-    width: 250px;
-    margin-left: 10px;
-    margin-top: 5px;
+  .store-name-logo {
+    display: inline-flex;
+    margin: 15px;
     
-    svg {
-      width: 100%;
+    .store-name {
+      font-size: 30px;
+      padding-left: 20px;
+      color:white;
+      padding-top: 5px;
+    }
+
+    .logo-container {
+      display: inline-flex;
+      height: 50px;
+      width: 50px;
+      
+      svg {
+        width: 100%;
+      }
     }
   }
 
@@ -23,8 +36,10 @@
     justify-content: flex-end;
     cursor: pointer;
     padding-top: 20px;
+    padding-right: 10px;
 
     .option {
+      color:white;
       padding: 10px 15px;
     }
 
@@ -34,6 +49,10 @@
 
 @media only screen and (max-width: 800px) {
   .header {
+    .store-name-logo {
+      margin: 15px;
+    }
+
     .options {
       .option {
         padding: 8px 8px;
@@ -46,14 +65,21 @@
 @media only screen and (max-width: 650px) {
 
   .header {
-    display: inline;
+    display: inline-block;
     margin: auto;
     
-    .logo-container {
+    .store-name-logo {
       display: block;
       margin: auto;
       text-align: center;
       padding: 10px;
+
+      .store-name {
+        vertical-align: top;
+        padding: 5px 10px;
+        display: inline-block;
+      }
+
     }
 
     .options {
@@ -68,9 +94,8 @@
         display: inline-block;
         padding-bottom: 10px;
       }
-    }
-    
-}
+    }  
+  }
 }
 @media only screen and (max-width: 340px) {
   .header {

@@ -7,7 +7,7 @@ import {withRouter} from 'react-router-dom';
 
 import './cart-icon.styles.scss';
 
-import {ReactComponent as ShoppingBagIcon} from '../../assets/shopping-bag.svg';
+import {ReactComponent as ShoppingBagIcon} from '../../assets/shopping-bag-white.svg';
 import {toggleCartHidden} from '../../redux/cart/cart.actions';
 import {selectCartItemsCount} from '../../redux/cart/cart.selectors';
 
