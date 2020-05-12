@@ -8,7 +8,7 @@ import Directory from '../../components/directory-menu/directory-menu.component'
 const HomePage = () => (
 
     <div className="homepage">
-        <Link to="/shop/womens"><img className="promo-image" src="https://i.ibb.co/sJnfwLS/spring-promo.jpg" alt="Spring Promo"/></Link>
+        <Link to="/shop/womens"><img className="promo-image" src="https://i.ibb.co/q0kDtwQ/conquerthecity.jpg" alt="Spring Promo"/></Link>
         <div className="department-message">New Styles In Every Department</div>
         <Directory />
     </div>
