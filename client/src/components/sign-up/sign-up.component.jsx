@@ -7,7 +7,7 @@ import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import {signUpStart} from '../../redux/user/user.actions'
 
-const SignUp = ({signUpStart}) => {
+const SignUp = ({signUpStart, user}) => {
 
     const [userSignUpInfo, setUserSignUpInfo] = 
         useState({
@@ -34,10 +34,19 @@ const SignUp = ({signUpStart}) => {
         setUserSignUpInfo({...userSignUpInfo, [name]: value});
     }
 
+    const error = user.error !== null && (email !== "" || password !=="") ;
+    let errorMessage = "";
+    if (error)
+        errorMessage = user.error.message;
+
     return(
         <div className="sign-up">
             <h2>I don't have an account.</h2>
-            <span>Sign up with your email and password:</span>
+            {!error ? null :  
+                <div className="signin-error-message">{errorMessage}<br/><br/></div>
+            }
+            <span>Sign up with your email and password:<br/><br/></span>
+            <span>** All fields are required.</span>
             <form onSubmit={handleSubmit}>
                 <FormInput 
                     name="displayName" 
@@ -83,8 +92,13 @@ const SignUp = ({signUpStart}) => {
     )
 };
 
+const mapStateToProps = (state) => ({
+    user : state.user
+})
+
+
 const mapDispatchToProps = (dispatch) => ({
     signUpStart : (singUpInfo) => dispatch(signUpStart(singUpInfo))
 });
 
-export default connect(null, mapDispatchToProps) (SignUp);
+export default connect(mapStateToProps, mapDispatchToProps) (SignUp);
