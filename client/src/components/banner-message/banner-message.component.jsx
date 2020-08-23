@@ -1,13 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 
 import './banner-message.styles.scss';
 
 const BannerMessage = () => (
 
-    <div className="banner-message">
-        <Link className="message-link" to="/shop/jackets">SPRING SALE! 50% OFF ALL JACKETS!</Link>
-    </div>
+    <div className="banner-message">25% Off All Orders + Free Shipping Over $75</div>
 
 );
 

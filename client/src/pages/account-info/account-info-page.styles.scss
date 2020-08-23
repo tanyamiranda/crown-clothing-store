@@ -47,6 +47,16 @@
         .order-history {
             width: 500px;
             padding-top: 10px;
+            border: 0.5px solid silver;
+            padding: 5px;
+
+            .dollar-value {
+                text-align: right;
+            }
+
+            .center-align {
+                text-align: center;
+            }
 
             .titles{
                 font-weight: bold;

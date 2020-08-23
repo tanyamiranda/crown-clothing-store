@@ -44,18 +44,18 @@ const AccountInfoPage = ({currentUser, history, signOutStart, orderHistory}) => 
                         <div className="title">OrderHistory</div>
                         <div className="detail" key="header">
                             <span><b>OrderId</b></span>
-                            <span><b>Date</b></span>
-                            <span><b>Total</b></span>
-                            <span><b>Status</b></span>
+                            <span className="center-align"><b>Date</b></span>
+                            <span className="center-align"><b>Status</b></span>
+                            <span className="dollar-value"><b>Total</b></span>
                         </div>
                         {
                             orderHistory.length > 0 ?
                                 orderHistory.map(order => (
                                     <div className="detail" key={order.id} >
                                         <span><Link className="link" to={`/orderdetails/${order.id}`}>{order.id}</Link></span>
-                                        <span>{formatDisplayDate(order.id)}</span>
-                                        <span>{formatDisplayDollarValue(order.orderTotal)}</span>
-                                        <span>{order.orderStatus}</span>                                    
+                                        <span className="center-align">{formatDisplayDate(order.id)}</span>                                
+                                        <span className="center-align">{order.orderStatus}</span>
+                                        <span className="dollar-value">{formatDisplayDollarValue(order.orderTotal)}</span>
                                     </div>
                                 
                                 ))

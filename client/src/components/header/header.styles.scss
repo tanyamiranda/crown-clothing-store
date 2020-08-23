@@ -1,109 +1,124 @@
-
-
 .header {
-  background-color: black;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-
-  .store-name-logo {
+    background-color: white;
+    width: 100%;
     display: inline-flex;
-    margin: 15px;
-    
-    .store-name {
-      font-size: 30px;
-      padding-left: 20px;
-      color:white;
-      padding-top: 5px;
-    }
-
-    .logo-container {
-      display: inline-flex;
-      height: 50px;
-      width: 50px;
-      
-      svg {
-        width: 100%;
-      }
-    }
-  }
-
-  .options {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    cursor: pointer;
-    padding-top: 20px;
-    padding-right: 10px;
-
-    .option {
-      color:white;
-      padding: 10px 15px;
-    }
-
-  }
-
-}
-
-@media only screen and (max-width: 800px) {
-  .header {
+    justify-content: space-between;
+    box-shadow: 0px 3px 3px #e8e8e8;
+  
     .store-name-logo {
-      margin: 15px;
+        display: inline-flex;
+        margin: 15px;
+        
+        .store-name {
+            font-family: "Cinzel Decorative", "Open Sans Condensed", Arial, sans-serif;
+            font-size: 20pt;
+            color: #970101;
+            padding-top: 5px;
+        }
     }
-
+  
     .options {
-      .option {
-        padding: 8px 8px;
-      }
+        display: inline-block;
+        justify-content: flex-end;
+        cursor: pointer;
+        margin: 15px;
+        color:black;
+
+        .shop-all {
+            display: none;
+        }
+
+        .hide-links, .show-links{
+            display: inline-block;
+        }
+
+        #account-links {
+            display: inline-flex;
+        }
+
+        #mobile-shop-link {
+            display: none;
+        }
+
+        .option {  
+            padding: 10px 15px;
+            white-space: nowrap;
+        }
+  
     }
-
-  }
 }
-
-@media only screen and (max-width: 650px) {
-
-  .header {
-    display: inline-block;
-    margin: auto;
+   
+@media only screen and (max-width: 850px) {
+  
+    .header {
+        display: inline-block;
+        margin: auto;
+        
+        .store-name-logo {
+            display: block;
+            margin: auto;
+            text-align: center;
+            padding: 10px;
     
-    .store-name-logo {
-      display: block;
-      margin: auto;
-      text-align: center;
-      padding: 10px;
-
-      .store-name {
-        vertical-align: top;
-        padding: 5px 10px;
-        display: inline-block;
-      }
-
+            .store-name {
+                padding: 5px 10px;
+                display: inline-block;
+            }
+    
+        }
+    
+        .options {
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            justify-content: center;
+            margin: auto;
+        }  
+        
     }
-
-    .options {
-      width: 100%;
-      display: block;
-      margin: auto;
-      text-align: center;
-      padding: 0px;
-      border-top: 0.5px solid silver;
-
-      .option {
-        display: inline-block;
-        padding-bottom: 10px;
-      }
-    }  
-  }
 }
-@media only screen and (max-width: 340px) {
-  .header {
-    .options {
-      .option {
-        font-size: 14px;
-        padding-bottom: 12px;
-      }
+
+@media only screen and (max-width: 550px) {
+    .header {
+        .options {
+            display: inline-flex; 
+
+            .shop-all {
+                display: inline-block;
+            }
+
+            .show-links{
+                display: inline-block;
+                position: absolute;
+                top: 140px;
+                background-color: #e8e8e8;
+                width: 100%;
+                z-index: 1000;
+            }
+
+            .hide-links {
+                display: none;
+            }
+
+            #mobile-shop-link {
+                display: inline-flex;
+                order:1; 
+            }
+            #account-links {
+                order:2;
+            }
+            #shop-links {
+                order:3;  
+
+            }            
+
+            .shop {
+                width: 100%;
+                display: inline-block;
+                text-align: center;
+                font-weight: bold;
+            }
+
+        }
     }
-  }
 }

@@ -1,24 +1,40 @@
 .footer-wrapper {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
     padding: 20px 0;
-    background-color: black;
-    color: white;
+    border-top: .5px solid silver;
+    background-color: #f6f6f6;
+    color: black;
     margin-top: 10px;
 }
 
 .footer {
-
-    font-size: small;
+    width: 90%;
+    max-width: 500px;
+    display: inline-flex;
+    justify-content: space-between;
     text-align: center;
-    line-height: 1.2em;
-    letter-spacing: 1pt;
+    line-height: 2em;
+    font-size: small;
 
-    .copyright {
-        padding: 15px;
+    .section {
+        max-width: 400px;
+        width: 40%;
+
+        .section-name {
+            font-weight: bold;
+            letter-spacing: .5px;
+        }
+
     }
 
-    .extra-info {
-        font-style: italic;
-        padding: 15px;
-    }
+}
 
+.copyright {
+    display: block;
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: small;
+    letter-spacing: 1.25px;
 }

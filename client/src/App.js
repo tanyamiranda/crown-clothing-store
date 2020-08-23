@@ -34,8 +34,8 @@ const App = ({checkUserSession, currentUser}) => {
   return (
     <div>
       <ScrollToTop>
-      <Header/>
       <BannerMessage/>
+      <Header/>
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />} >
